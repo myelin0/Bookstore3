@@ -10,11 +10,11 @@ const Categories = () => {
     dispatch(categoriesActions.toggleText());
   };
   return (
-    <div className="status">
-      <button onClick={toggleTextHandler} type="button" className="status-btn">
+    <div className="absolute inset-2/4 inset-x-1/3">
+      <button onClick={toggleTextHandler} type="button" className="bg-azure font-sm font-normal rounded border text-white py-2 px-4">
         Check status
       </button>
-      {show && <h3 className="under-contr">Under Construction</h3>}
+      {show && <h3 className="text-red-600 mt-1.5">Under Construction</h3>}
     </div>
   );
 };
