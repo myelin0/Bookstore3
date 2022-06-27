@@ -1,35 +1,40 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeBook } from '../redux/books/books';
+import { deleteBook, getBooksData } from '../redux/books/bookthunk';
 import Book from './Book';
 
 const BookList = () => {
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.booksReducer);
-  const removeBookfromStore = (bookId) => {
-    dispatch(removeBook(bookId));
+  const books = useSelector((state) => state.books);
+  const booksKey = Object.keys(books);
+
+  useEffect(() => {
+    dispatch(getBooksData());
+  }, []);
+
+  const removeBookfromStore = (id) => {
+    dispatch(deleteBook(id));
   };
+
   return (
     <div>
       <ul>
-        {data.length > 0 ? (
-          data.map(({
-            id, title, author, category,
-          }) => (
-            <Book
-              key={id}
-              title={title}
-              author={author}
-              category={category}
-              id={id}
-              removeBookHandler={removeBookfromStore}
-            />
-          ))
-        ) : (
-          <li>
-            <h3>No books added</h3>
-          </li>
-        )}
+        {
+          booksKey.map((id) => {
+            const book = books[id];
+            const { category, author, title } = book[0];
+            return (
+              <Book
+                key="key"
+                title={title}
+                author={author}
+                category={category}
+                id={id}
+                removeBookHandler={removeBookfromStore}
+              />
+            );
+          })
+}
       </ul>
     </div>
   );
