@@ -31,11 +31,11 @@ const Form = () => {
   };
 
   return (
-    <div>
-      <h2>ADD NEW BOOK</h2>
-      <form onSubmit={formHandler}>
+    <div className="flex flex-col gap-6 w-11/12 mx-auto">
+      <h2 className="font-montserrat font-bold text-warm-grey text-xl">ADD NEW BOOK</h2>
+      <form onSubmit={formHandler} className="flex justify-between">
         <input
-          className="Title"
+          className="Title border w-1/4 px-2 rounded bg-white text-pink-grey font-base font-montserrat font-normal leading-normal"
           name="title"
           type="text"
           placeholder="Book Title"
@@ -44,7 +44,7 @@ const Form = () => {
           required
         />
         <input
-          className="Author"
+          className="Author border w-1/4 px-2 rounded bg-white text-pink-grey font-base font-montserrat font-normal leading-normal"
           type="text"
           name="author"
           placeholder="Author Name"
@@ -54,6 +54,7 @@ const Form = () => {
         />
 
         <select
+          className="border w-1/4 px-2 rounded bg-white text-pinkish-grey font-base font-montserrat font-normal leading-normal"
           name="category"
           value={category}
           onChange={changeHandler}
@@ -61,20 +62,20 @@ const Form = () => {
           <option value="" hidden>
             Category
           </option>
-          <option value="Action">
+          <option value="Action" className="text-black-two">
             Action
           </option>
-          <option value="Sci-fi">
+          <option value="Sci-fi" className="text-black-two">
             Science Fiction
           </option>
-          <option value="economy">
+          <option value="economy" className="text-black-two">
             Economy
           </option>
-          <option value="Coding">
+          <option value="Coding" className="text-black-two">
             Coding
           </option>
         </select>
-        <button type="submit">Add Book</button>
+        <button type="submit" className="text-white text-center font-bold font-roboto font-sm leading-normal py-2 px-8 rounded bg-azure ">Add Book</button>
       </form>
     </div>
   );
